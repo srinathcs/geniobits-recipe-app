@@ -1,4 +1,4 @@
-package com.geniobits.recipeapp.network
+package com.geniobits.recipeapp.data.network
 
 import com.geniobits.recipeapp.views.recipeBrowser.model.RecipeListResponse
 import retrofit2.http.GET

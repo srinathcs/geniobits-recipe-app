@@ -1,6 +1,7 @@
 package com.geniobits.recipeapp.views.recipeBrowser.presentation
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,20 +12,19 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.geniobits.recipeapp.R
 import com.geniobits.recipeapp.databinding.FragmentRecipeBrowserBinding
-import com.geniobits.recipeapp.network.RetrofitHelper
-import com.geniobits.recipeapp.network.WebServices
+import com.geniobits.recipeapp.data.network.RetrofitHelper
+import com.geniobits.recipeapp.data.network.WebServices
 import com.geniobits.recipeapp.utils.ResultResponse
-import com.geniobits.recipeapp.views.db.RecipeDao
-import com.geniobits.recipeapp.views.db.RecipeDatabase
+import com.geniobits.recipeapp.data.db.dao.RecipeDao
+import com.geniobits.recipeapp.data.db.RecipeDatabase
 import com.geniobits.recipeapp.views.recipeBrowser.listener.FavoriteClickListener
 import com.geniobits.recipeapp.views.recipeBrowser.listener.RecipeClickListener
 import com.geniobits.recipeapp.views.recipeBrowser.model.Recipe
 import com.geniobits.recipeapp.views.recipeBrowser.repository.RecipeBrowserRepositoryImpl
 import com.geniobits.recipeapp.views.recipeBrowser.viewmodel.RecipeBrowserViewModel
 import com.geniobits.recipeapp.views.recipeBrowser.viewmodel.RecipeBrowserViewModelFactory
-import com.geniobits.recipeapp.views.recipeDetails.RecipeDetailsFragment
+import com.geniobits.recipeapp.views.meal.recipeDetails.RecipeDetailsActivity
 import com.google.gson.Gson
 
 class RecipeBrowserFragment : Fragment() {
@@ -161,13 +161,11 @@ class RecipeBrowserFragment : Fragment() {
     private fun setAdapterListener() {
         adapter.setRecipeClickListener(object : RecipeClickListener {
             override fun onRecipe(recipe: Recipe) {
-                val mRecipeDetailsFragment = RecipeDetailsFragment.getInstance()
+                val intent = Intent(requireActivity(), RecipeDetailsActivity::class.java)
                 val gson = Gson()
                 val recipeJSONString = gson.toJson(recipe)
-                val bundle = Bundle()
-                bundle.putString(RecipeDetailsFragment.RECIPE_KEY, recipeJSONString)
-                mRecipeDetailsFragment.arguments = bundle
-
+                intent.putExtra(RecipeDetailsActivity.RECIPE_KEY, recipeJSONString)
+                requireActivity().startActivity(intent)
             }
         })
 
@@ -235,25 +233,6 @@ class RecipeBrowserFragment : Fragment() {
                         isFirstTimeCalled = true
                     }
                 }
-            }
-        }
-    }
-    private fun onBottomSetup(){
-        binding.bnvMenu.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.menu_item_1 -> {
-                    // Handle menu item 1 selection
-                    true
-                }
-                R.id.menu_item_2 -> {
-                    // Handle menu item 2 selection
-                    true
-                }
-                R.id.menu_item_3 -> {
-                    // Handle menu item 3 selection
-                    true
-                }
-                else -> false
             }
         }
     }

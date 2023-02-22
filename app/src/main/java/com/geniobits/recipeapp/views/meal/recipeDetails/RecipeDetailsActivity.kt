@@ -1,34 +1,30 @@
-package com.geniobits.recipeapp.views.recipeDetails
+package com.geniobits.recipeapp.views.meal.recipeDetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.geniobits.recipeapp.databinding.FragmentRecipeDetailsBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.geniobits.recipeapp.databinding.ActivityRecipeDetailsBinding
 import com.geniobits.recipeapp.views.recipeBrowser.model.Recipe
 import com.google.gson.Gson
 
-class RecipeDetailsFragment : Fragment() {
-    private lateinit var binding: FragmentRecipeDetailsBinding
+class RecipeDetailsActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityRecipeDetailsBinding
     private lateinit var recipe: Recipe
 
 
     companion object {
         const val RECIPE_KEY = "RECIPE_KEY"
-        fun getInstance(): RecipeDetailsFragment {
-            return RecipeDetailsFragment()
-        }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentRecipeDetailsBinding.inflate(inflater, container, false)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityRecipeDetailsBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
+        supportActionBar?.hide()
         getIntentData()
         setUpDetail()
-        return binding.root
     }
 
     private fun setUpDetail() {
@@ -73,6 +69,11 @@ class RecipeDetailsFragment : Fragment() {
             val ingredient18 = recipe.strIngredient18 ?: ""
             val ingredient19 = recipe.strIngredient19 ?: ""
             val ingredient20 = recipe.strIngredient20 ?: ""
+            val instruction = recipe.strInstructions ?: ""
+            val title = recipe.strMeal ?: ""
+
+            binding.tvInstruction.text = instruction
+            binding.tvTitle.text = title
 
             if (measurement1.isNotEmpty() || ingredient1.isNotEmpty()) {
                 binding.tvIngredient1.visibility = View.VISIBLE
@@ -83,137 +84,140 @@ class RecipeDetailsFragment : Fragment() {
 
             if (measurement2.isNotEmpty() || ingredient2.isNotEmpty()) {
                 binding.tvIngredient2.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement2, ingredient2)
+                binding.tvIngredient2.text = getFinalIngredients(measurement2, ingredient2)
             } else {
                 binding.tvIngredient2.visibility = View.GONE
             }
 
             if (measurement3.isNotEmpty() || ingredient3.isNotEmpty()) {
                 binding.tvIngredient3.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement3, ingredient3)
+                binding.tvIngredient3.text = getFinalIngredients(measurement3, ingredient3)
             } else {
                 binding.tvIngredient3.visibility = View.GONE
             }
 
             if (measurement4.isNotEmpty() || ingredient4.isNotEmpty()) {
                 binding.tvIngredient4.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement4, ingredient4)
+                binding.tvIngredient4.text = getFinalIngredients(measurement4, ingredient4)
             } else {
                 binding.tvIngredient4.visibility = View.GONE
             }
 
             if (measurement5.isNotEmpty() || ingredient5.isNotEmpty()) {
                 binding.tvIngredient5.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement5, ingredient5)
+                binding.tvIngredient5.text = getFinalIngredients(measurement5, ingredient5)
             } else {
                 binding.tvIngredient5.visibility = View.GONE
             }
 
             if (measurement6.isNotEmpty() || ingredient6.isNotEmpty()) {
                 binding.tvIngredient6.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement6, ingredient6)
+                binding.tvIngredient6.text = getFinalIngredients(measurement6, ingredient6)
             } else {
                 binding.tvIngredient6.visibility = View.GONE
             }
 
             if (measurement7.isNotEmpty() || ingredient7.isNotEmpty()) {
                 binding.tvIngredient7.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement7, ingredient7)
+                binding.tvIngredient7.text = getFinalIngredients(measurement7, ingredient7)
             } else {
                 binding.tvIngredient7.visibility = View.GONE
             }
 
             if (measurement8.isNotEmpty() || ingredient8.isNotEmpty()) {
                 binding.tvIngredient8.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement8, ingredient8)
+                binding.tvIngredient8.text = getFinalIngredients(measurement8, ingredient8)
             } else {
                 binding.tvIngredient8.visibility = View.GONE
             }
 
             if (measurement9.isNotEmpty() || ingredient9.isNotEmpty()) {
                 binding.tvIngredient9.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement9, ingredient9)
+                binding.tvIngredient9.text = getFinalIngredients(measurement9, ingredient9)
             } else {
                 binding.tvIngredient9.visibility = View.GONE
             }
 
             if (measurement10.isNotEmpty() || ingredient10.isNotEmpty()) {
                 binding.tvIngredient10.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement10, ingredient10)
+                binding.tvIngredient10.text = getFinalIngredients(measurement10, ingredient10)
             } else {
                 binding.tvIngredient10.visibility = View.GONE
             }
 
             if (measurement11.isNotEmpty() || ingredient11.isNotEmpty()) {
                 binding.tvIngredient11.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement11, ingredient11)
+                binding.tvIngredient11.text = getFinalIngredients(measurement11, ingredient11)
             } else {
                 binding.tvIngredient11.visibility = View.GONE
             }
 
             if (measurement12.isNotEmpty() || ingredient12.isNotEmpty()) {
                 binding.tvIngredient12.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement12, ingredient12)
+                binding.tvIngredient12.text = getFinalIngredients(measurement12, ingredient12)
             } else {
                 binding.tvIngredient12.visibility = View.GONE
             }
 
             if (measurement13.isNotEmpty() || ingredient13.isNotEmpty()) {
                 binding.tvIngredient13.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement13, ingredient13)
+                binding.tvIngredient13.text = getFinalIngredients(measurement13, ingredient13)
             } else {
                 binding.tvIngredient13.visibility = View.GONE
             }
 
             if (measurement14.isNotEmpty() || ingredient14.isNotEmpty()) {
                 binding.tvIngredient14.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement14, ingredient14)
+                binding.tvIngredient14.text = getFinalIngredients(measurement14, ingredient14)
             } else {
                 binding.tvIngredient14.visibility = View.GONE
             }
 
             if (measurement15.isNotEmpty() || ingredient15.isNotEmpty()) {
                 binding.tvIngredient15.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement15, ingredient15)
+                binding.tvIngredient15.text = getFinalIngredients(measurement15, ingredient15)
             } else {
                 binding.tvIngredient15.visibility = View.GONE
             }
 
             if (measurement16.isNotEmpty() || ingredient16.isNotEmpty()) {
                 binding.tvIngredient16.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement16, ingredient16)
+                binding.tvIngredient16.text = getFinalIngredients(measurement16, ingredient16)
             } else {
                 binding.tvIngredient16.visibility = View.GONE
             }
 
             if (measurement17.isNotEmpty() || ingredient17.isNotEmpty()) {
                 binding.tvIngredient17.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement17, ingredient17)
+                binding.tvIngredient17.text = getFinalIngredients(measurement17, ingredient17)
             } else {
                 binding.tvIngredient17.visibility = View.GONE
             }
 
             if (measurement18.isNotEmpty() || ingredient18.isNotEmpty()) {
                 binding.tvIngredient18.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement18, ingredient18)
+                binding.tvIngredient18.text = getFinalIngredients(measurement18, ingredient18)
             } else {
                 binding.tvIngredient18.visibility = View.GONE
             }
 
             if (measurement19.isNotEmpty() || ingredient19.isNotEmpty()) {
                 binding.tvIngredient19.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement19, ingredient19)
+                binding.tvIngredient19.text = getFinalIngredients(measurement19, ingredient19)
             } else {
                 binding.tvIngredient19.visibility = View.GONE
             }
 
             if (measurement20.isNotEmpty() || ingredient20.isNotEmpty()) {
                 binding.tvIngredient20.visibility = View.VISIBLE
-                binding.tvIngredient1.text = getFinalIngredients(measurement20, ingredient20)
+                binding.tvIngredient20.text = getFinalIngredients(measurement20, ingredient20)
             } else {
                 binding.tvIngredient20.visibility = View.GONE
             }
         }
+        Glide.with(binding.root)
+            .load(recipe.strMealThumb)
+            .into(binding.ivImage)
     }
 
     private fun getFinalIngredients(measurement: String, ingredient: String): String {
@@ -223,7 +227,8 @@ class RecipeDetailsFragment : Fragment() {
         }
         if (ingredient.isNotEmpty()) {
             if (mData.isNotEmpty()) {
-                mData.plus(" ").plus(ingredient)
+                val teamData = mData.plus(" ").plus(ingredient)
+                mData = teamData
             } else {
                 mData = ingredient
             }
@@ -232,8 +237,8 @@ class RecipeDetailsFragment : Fragment() {
     }
 
     private fun getIntentData() {
-        arguments?.let {
-            val recipeJSONString = it.getString(RECIPE_KEY, "")
+        intent?.let {
+            val recipeJSONString = it.getStringExtra(RECIPE_KEY)
             val gson = Gson()
             recipe = gson.fromJson(recipeJSONString, Recipe::class.java)
         }

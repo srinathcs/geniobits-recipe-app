@@ -1,4 +1,4 @@
-package com.geniobits.recipeapp.views.db
+package com.geniobits.recipeapp.data.db.dao
 
 
 import androidx.room.Dao

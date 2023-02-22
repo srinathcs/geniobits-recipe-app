@@ -1,8 +1,7 @@
 package com.geniobits.recipeapp.views.recipeBrowser.repository
 
-import com.geniobits.recipeapp.network.WebServices
-import com.geniobits.recipeapp.views.db.RecipeDao
-import com.geniobits.recipeapp.views.db.RecipeDatabase
+import com.geniobits.recipeapp.data.network.WebServices
+import com.geniobits.recipeapp.data.db.dao.RecipeDao
 import com.geniobits.recipeapp.views.recipeBrowser.model.Recipe
 import com.geniobits.recipeapp.views.recipeBrowser.model.RecipeListResponse
 import kotlinx.coroutines.Dispatchers
