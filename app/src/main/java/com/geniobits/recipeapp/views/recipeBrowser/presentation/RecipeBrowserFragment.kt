@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +23,8 @@ import com.geniobits.recipeapp.views.recipeBrowser.model.Recipe
 import com.geniobits.recipeapp.views.recipeBrowser.repository.RecipeBrowserRepositoryImpl
 import com.geniobits.recipeapp.views.recipeBrowser.viewmodel.RecipeBrowserViewModel
 import com.geniobits.recipeapp.views.recipeBrowser.viewmodel.RecipeBrowserViewModelFactory
+import com.geniobits.recipeapp.views.recipeDetails.RecipeDetailsFragment
+import com.google.gson.Gson
 
 class RecipeBrowserFragment : Fragment() {
 
@@ -159,7 +160,13 @@ class RecipeBrowserFragment : Fragment() {
     private fun setAdapterListener() {
         adapter.setRecipeClickListener(object : RecipeClickListener {
             override fun onRecipe(recipe: Recipe) {
-                //TODO go to next page
+                val mRecipeDetailsFragment = RecipeDetailsFragment.getInstance()
+                val gson = Gson()
+                val recipeJSONString = gson.toJson(recipe)
+                val bundle = Bundle()
+                bundle.putString(RecipeDetailsFragment.RECIPE_KEY, recipeJSONString)
+                mRecipeDetailsFragment.arguments = bundle
+
             }
         })
 
