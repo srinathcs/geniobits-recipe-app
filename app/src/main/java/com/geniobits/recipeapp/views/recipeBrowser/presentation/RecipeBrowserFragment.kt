@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.geniobits.recipeapp.R
 import com.geniobits.recipeapp.databinding.FragmentRecipeBrowserBinding
 import com.geniobits.recipeapp.network.RetrofitHelper
 import com.geniobits.recipeapp.network.WebServices
@@ -227,6 +228,25 @@ class RecipeBrowserFragment : Fragment() {
                         isFirstTimeCalled = true
                     }
                 }
+            }
+        }
+    }
+    private fun onBottomSetup(){
+        binding.bnvMenu.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.menu_item_1 -> {
+                    // Handle menu item 1 selection
+                    true
+                }
+                R.id.menu_item_2 -> {
+                    // Handle menu item 2 selection
+                    true
+                }
+                R.id.menu_item_3 -> {
+                    // Handle menu item 3 selection
+                    true
+                }
+                else -> false
             }
         }
     }
