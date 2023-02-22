@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,12 +11,12 @@
         android:layout_alignParentTop="true"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
-        android:imeOptions="actionSearch"
         android:iconifiedByDefault="true"
-        app:queryHint="Search recipe..."
+        android:imeOptions="actionSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="Search recipe..." />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvRecipes"
@@ -34,7 +33,7 @@
         android:id="@+id/tvNotFound"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Item Not Found"
+        android:text="@string/item_not_found"
         android:textAlignment="center"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,6 +51,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnvMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_menu"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
