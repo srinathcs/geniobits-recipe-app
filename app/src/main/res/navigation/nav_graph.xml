@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/recipeFragment">
+
+    <fragment
+        android:id="@+id/recipeFragment"
+        android:name="com.geniobits.recipeapp.views.recipeBrowser.presentation.RecipeBrowserFragment"
+        android:label="Recipe" />
+
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.geniobits.recipeapp.views.favouriteRecipe.FavouriteRecipeFragment"
+        android:label="Favourite" />
+
+    <fragment
+        android:id="@+id/shoppingFragment"
+        android:name="com.geniobits.recipeapp.views.shoppingDetails.ShoppingFragment"
+        android:label="Shopping" />
+
+    <fragment
+        android:id="@+id/mailFragment"
+        android:name="com.geniobits.recipeapp.views.meal.MealFragment"
+        android:label="Mail" />
+
+</navigation>
+

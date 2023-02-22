@@ -4,7 +4,7 @@
         <shape
             android:shape="ring"
             android:innerRadiusRatio="3"
-            android:thicknessRatio="8"
+            android:thicknessRatio="20"
             android:useLevel="false">
             <solid android:color="#721E1D1D" />
         </shape>
@@ -16,12 +16,12 @@
             <shape
                 android:shape="ring"
                 android:innerRadiusRatio="3"
-                android:thicknessRatio="8"
+                android:thicknessRatio="20"
                 android:useLevel="true">
                 <gradient
                     android:type="sweep"
-                    android:startColor="#721E1D1D"
-                    android:endColor="#0B0B0B"
+                    android:startColor="#E5334E"
+                    android:endColor="#E5334E"
                     android:angle="0"
                     android:useLevel="true" />
             </shape>
